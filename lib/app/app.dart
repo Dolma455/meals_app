@@ -1,4 +1,5 @@
-import 'package:expense_tracker/screen/categories.dart';
+import 'package:expense_tracker/data/dummy_data.dart';
+import 'package:expense_tracker/screen/meals.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -18,7 +19,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: theme,
-      home: const CategoriesScreen(),
+      home: MealsScreen(
+        title: 'some category',
+        meals: dummyMeals,
+      ),
     );
   }
 }
