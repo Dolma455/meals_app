@@ -1,9 +1,18 @@
 import 'package:expense_tracker/data/dummy_data.dart';
+import 'package:expense_tracker/screen/meals.dart';
 import 'package:expense_tracker/widgets/category_grid_item.dart';
 import 'package:flutter/material.dart';
 
 class CategoriesScreen extends StatelessWidget {
   const CategoriesScreen({super.key});
+
+  void _selectCategory(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+          builder: (context) => MealsScreen(title: "Hello", meals: dummyMeals)),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +30,9 @@ class CategoriesScreen extends StatelessWidget {
         ),
         children: [
           for (final category in availableCategories)
-            CategoryGridItem(category: category),
+            CategoryGridItem(category: category,onSelectCategory: () {
+              _selectCategory(context);
+            },),
         ],
       ),
     );
