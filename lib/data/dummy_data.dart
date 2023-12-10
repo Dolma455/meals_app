@@ -20,7 +20,8 @@ final dummyMeals = [
         'c2',
       ],
       title: "Tomato sauce",
-      imageUrl: "",
+      imageUrl:
+          "https://www.allrecipes.com/thmb/xL_49kh1as-oMjV-MzLOc0W6bZ0=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/232397-homemade-ketchup-ddmfs-28-4x339-2x1-f7eec99de30547a68f0874309605a916.jpg",
       ingredients: [
         '4 Tomatoes',
         'Spices',
@@ -47,7 +48,8 @@ final dummyMeals = [
         'c4',
       ],
       title: "French Fry",
-      imageUrl: "",
+      imageUrl:
+          "https://thecozycook.com/wp-content/uploads/2020/02/Copycat-McDonalds-French-Fries-.jpg",
       ingredients: [
         '8 Tomatoes',
         'Spices',
