@@ -1,3 +1,5 @@
+import 'package:expense_tracker/data/dummy_data.dart';
+import 'package:expense_tracker/widgets/category_grid_item.dart';
 import 'package:flutter/material.dart';
 
 class CategoriesScreen extends StatelessWidget {
@@ -10,31 +12,16 @@ class CategoriesScreen extends StatelessWidget {
         title: const Text("Pick your Category"),
       ),
       body: GridView(
+        padding: const EdgeInsets.all(24),
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           childAspectRatio: 3 / 2,
           crossAxisSpacing: 20,
           mainAxisSpacing: 20,
         ),
-        children: const [
-          Text(
-            "Text1",
-            style: TextStyle(
-              color: Colors.white,
-            ),
-          ),
-          Text(
-            "Text2",
-            style: TextStyle(
-              color: Colors.white,
-            ),
-          ),
-          Text(
-            "Text3",
-            style: TextStyle(
-              color: Colors.white,
-            ),
-          ),
+        children: [
+          for (final category in availableCategories)
+            CategoryGridItem(category: category),
         ],
       ),
     );
