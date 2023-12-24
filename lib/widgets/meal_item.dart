@@ -1,4 +1,5 @@
 import 'package:expense_tracker/model/meal.dart';
+import 'package:expense_tracker/widgets/meal_item_trait.dart';
 import 'package:flutter/material.dart';
 import 'package:transparent_image/transparent_image.dart';
 
@@ -49,7 +50,13 @@ class MealItem extends StatelessWidget {
                           color: Colors.white,
                         ),
                       ),
-                      const Row()
+                      Row(
+                        children: [
+                          MealItemTrait(
+                              icon: Icons.schedule,
+                              label: '${meal.duration} min')
+                        ],
+                      )
                     ],
                   ),
                 ))
