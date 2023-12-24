@@ -1,4 +1,5 @@
 import 'package:expense_tracker/model/meal.dart';
+import 'package:expense_tracker/screen/meal_detail.dart';
 import 'package:expense_tracker/widgets/meal_item.dart';
 import 'package:flutter/material.dart';
 
@@ -10,6 +11,12 @@ class MealsScreen extends StatelessWidget {
   });
   final String title;
   final List<Meal> meals;
+
+  void selectMeal(BuildContext context, Meal meal) {
+    Navigator.pop(context);
+    Navigator.push(context,
+        MaterialPageRoute(builder: (context) => MealDetailsScreen(meal: meal)));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +48,12 @@ class MealsScreen extends StatelessWidget {
     if (meals.isNotEmpty) {
       content = ListView.builder(
           itemCount: meals.length,
-          itemBuilder: (context, index) => MealItem(meal: meals[index]));
+          itemBuilder: (context, index) => MealItem(
+                meal: meals[index],
+                onSelectMeal: (meal) {
+                  selectMeal(context, meal);
+                },
+              ));
     }
     return Scaffold(
       appBar: AppBar(
