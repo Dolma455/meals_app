@@ -1,6 +1,7 @@
 import 'package:expense_tracker/model/meal.dart';
 import 'package:expense_tracker/screen/categories.dart';
 import 'package:expense_tracker/screen/meals.dart';
+import 'package:expense_tracker/widgets/main_drawer.dart';
 import 'package:flutter/material.dart';
 
 class TabsScreen extends StatefulWidget {
@@ -58,6 +59,7 @@ class _TabsScreenState extends State<TabsScreen> {
       appBar: AppBar(
         title: Text(activePageTitle),
       ),
+      drawer: const MainDrawer(),
       body: activePage,
       bottomNavigationBar: BottomNavigationBar(
           onTap: _selectPageIndex,
