@@ -2,15 +2,19 @@ import 'package:expense_tracker/model/meal.dart';
 import 'package:flutter/material.dart';
 
 class MealDetailsScreen extends StatelessWidget {
-  const MealDetailsScreen({super.key, required this.meal});
+  const MealDetailsScreen({super.key, required this.meal,required this.onToggleFavorite});
 
   final Meal meal;
+  final void Function(Meal meal) onToggleFavorite;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           title: Text(meal.title),
+          actions: [IconButton(onPressed: () {
+            onToggleFavorite(meal);
+          }, icon: const Icon(Icons.star))],
         ),
         body: SingleChildScrollView(
           child: Column(
@@ -26,7 +30,7 @@ class MealDetailsScreen extends StatelessWidget {
               Text(
                 'Ingredients',
                 style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                      color: Theme.of(context).colorScheme.onBackground,
+                      color: Theme.of(context).colorScheme.primary,
                       fontWeight: FontWeight.bold,
                     ),
               ),
@@ -43,7 +47,7 @@ class MealDetailsScreen extends StatelessWidget {
               Text(
                 'Steps',
                 style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                      color: Theme.of(context).colorScheme.onBackground,
+                      color: Theme.of(context).colorScheme.primary,
                       fontWeight: FontWeight.bold,
                     ),
               ),
@@ -59,7 +63,7 @@ class MealDetailsScreen extends StatelessWidget {
                   child: Text(
                     step,
                     textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                    style: Theme.of(context).textTheme.titleMedium!.copyWith(
                           color: Theme.of(context).colorScheme.onBackground,
                           fontWeight: FontWeight.bold,
                         ),
