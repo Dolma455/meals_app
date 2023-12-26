@@ -22,8 +22,10 @@ class Meal {
   final int duration;
   final Complexity complexity;
   final Affordability affordability;
-  final bool isGLutenFseFree;
+  final bool isGLutenFree;
+  final bool isLactoseFree;
   final bool veg;
+  final bool vegan;
   final bool iseNonVeg;
   Meal({
     required this.id,
@@ -35,8 +37,10 @@ class Meal {
     required this.duration,
     required this.complexity,
     required this.affordability,
-    required this.isGLutenFseFree,
+    required this.isGLutenFree,
+    required this.isLactoseFree,
     required this.veg,
+    required this.vegan,
     required this.iseNonVeg,
   });
 }
