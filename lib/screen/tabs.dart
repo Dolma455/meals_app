@@ -1,5 +1,6 @@
 import 'package:expense_tracker/model/meal.dart';
 import 'package:expense_tracker/screen/categories.dart';
+import 'package:expense_tracker/screen/filters.dart';
 import 'package:expense_tracker/screen/meals.dart';
 import 'package:expense_tracker/widgets/main_drawer.dart';
 import 'package:flutter/material.dart';
@@ -44,6 +45,9 @@ class _TabsScreenState extends State<TabsScreen> {
 
   void _setScreen(String identifier) {
     if (identifier == 'filters') {
+      Navigator.of(context).push(MaterialPageRoute(
+          builder: (ctx) =>
+              const FilterScreen())); //To replace an active screen
     } else {
       Navigator.of(context).pop();
     }

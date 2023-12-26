@@ -1,3 +1,5 @@
+import 'package:expense_tracker/screen/tabs.dart';
+import 'package:expense_tracker/widgets/main_drawer.dart';
 import 'package:flutter/material.dart';
 
 class FilterScreen extends StatefulWidget {
@@ -15,6 +17,13 @@ class _FilterScreenState extends State<FilterScreen> {
       appBar: AppBar(
         title: const Text('Your Filters'),
       ),
+      // drawer: MainDrawer(onSelectScreen: ((identifier) {
+      //   Navigator.pop(context);
+      //   if (identifier == 'meals') {
+      //     Navigator.of(context).pushReplacement(
+      //         MaterialPageRoute(builder: (ctx) => const TabsScreen()));
+      //   }
+      // })),
       body: Column(
         children: [
           SwitchListTile(
