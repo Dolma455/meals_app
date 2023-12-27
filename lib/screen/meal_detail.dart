@@ -2,7 +2,8 @@ import 'package:expense_tracker/model/meal.dart';
 import 'package:flutter/material.dart';
 
 class MealDetailsScreen extends StatelessWidget {
-  const MealDetailsScreen({super.key, required this.meal,required this.onToggleFavorite});
+  const MealDetailsScreen(
+      {super.key, required this.meal, required this.onToggleFavorite});
 
   final Meal meal;
   final void Function(Meal meal) onToggleFavorite;
@@ -12,17 +13,24 @@ class MealDetailsScreen extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           title: Text(meal.title),
-          actions: [IconButton(onPressed: () {
-            onToggleFavorite(meal);
-          }, icon: const Icon(Icons.star))],
+          actions: [
+            IconButton(
+                onPressed: () {
+                  onToggleFavorite(meal);
+                },
+                icon: const Icon(Icons.star))
+          ],
         ),
         body: SingleChildScrollView(
           child: Column(
             children: [
-              Image.network(
-                meal.imageUrl,
+              SizedBox(
                 height: 300,
                 width: double.infinity,
+                child: Image.network(
+                  meal.imageUrl,
+                  fit: BoxFit.cover,
+                ),
               ),
               const SizedBox(
                 height: 14,
@@ -31,7 +39,7 @@ class MealDetailsScreen extends StatelessWidget {
                 'Ingredients',
                 style: Theme.of(context).textTheme.titleLarge!.copyWith(
                       color: Theme.of(context).colorScheme.primary,
-                      fontWeight: FontWeight.bold,
+
                     ),
               ),
               for (final ingredient in meal.ingredients)

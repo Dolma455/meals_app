@@ -16,8 +16,13 @@ class MealsScreen extends StatelessWidget {
 
   void selectMeal(BuildContext context, Meal meal) {
     Navigator.pop(context);
-    Navigator.push(context,
-        MaterialPageRoute(builder: (context) => MealDetailsScreen(meal: meal,onToggleFavorite:onToggleFavorite ,)));
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => MealDetailsScreen(
+                  meal: meal,
+                  onToggleFavorite: onToggleFavorite,
+                )));
   }
 
   @override
@@ -57,7 +62,7 @@ class MealsScreen extends StatelessWidget {
                 },
               ));
     }
-    if(title==null) {
+    if (title == null) {
       return content;
     }
     return Scaffold(
