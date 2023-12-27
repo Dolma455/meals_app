@@ -24,9 +24,9 @@ class Meal {
   final Affordability affordability;
   final bool isGLutenFree;
   final bool isLactoseFree;
-  final bool veg;
-  final bool vegan;
-  final bool iseNonVeg;
+  final bool isVeg;
+  final bool isVegan;
+  
   Meal({
     required this.id,
     required this.categories,
@@ -39,8 +39,8 @@ class Meal {
     required this.affordability,
     required this.isGLutenFree,
     required this.isLactoseFree,
-    required this.veg,
-    required this.vegan,
-    required this.iseNonVeg,
+    required this.isVeg,
+    required this.isVegan,
+    
   });
 }
