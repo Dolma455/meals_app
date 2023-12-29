@@ -1,5 +1,6 @@
-import 'package:expense_tracker/model/meal.dart';
+
 import 'package:expense_tracker/providers/favourites_provider.dart';
+import 'package:expense_tracker/providers/filters_provider.dart';
 import 'package:expense_tracker/providers/meals_provider.dart';
 import 'package:expense_tracker/screen/categories.dart';
 import 'package:expense_tracker/screen/filters.dart';

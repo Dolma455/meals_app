@@ -6,9 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class MealDetailsScreen extends ConsumerWidget {
   const MealDetailsScreen(
       {super.key, required this.meal});
-
   final Meal meal;
-
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -20,8 +18,9 @@ class MealDetailsScreen extends ConsumerWidget {
                 onPressed: () {
                   final wasAdded= ref.read(favouriteMealsProvider.notifier).togglefavouriteMeal(meal);
                   ScaffoldMessenger.of(context).clearSnackBars();
-    ScaffoldMessenger.of(context)
-        .showSnackBar(SnackBar(content: Text(wasAdded?'Meal added as a favourite':'Meal removed')));
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(wasAdded?'Meal added as a favourite':'Meal removed')));
                 },
                 icon: const Icon(Icons.star))
           ],
