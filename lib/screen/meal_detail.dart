@@ -4,25 +4,29 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class MealDetailsScreen extends ConsumerWidget {
-  const MealDetailsScreen(
-      {super.key, required this.meal});
+  const MealDetailsScreen({super.key, required this.meal});
   final Meal meal;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final favouriteMeals = ref.watch(favouriteMealsProvider);
+    final isFavourite = favouriteMeals.contains(meal);
     return Scaffold(
         appBar: AppBar(
           title: Text(meal.title),
           actions: [
             IconButton(
                 onPressed: () {
-                  final wasAdded= ref.read(favouriteMealsProvider.notifier).togglefavouriteMeal(meal);
+                  final wasAdded = ref
+                      .read(favouriteMealsProvider.notifier)
+                      .togglefavouriteMeal(meal);
                   ScaffoldMessenger.of(context).clearSnackBars();
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text(wasAdded?'Meal added as a favourite':'Meal removed')));
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      content: Text(wasAdded
+                          ? 'Meal added as a favourite'
+                          : 'Meal removed')));
                 },
-                icon: const Icon(Icons.star))
+                icon: Icon(isFavourite ? Icons.star : Icons.star_border))
           ],
         ),
         body: SingleChildScrollView(
@@ -43,7 +47,6 @@ class MealDetailsScreen extends ConsumerWidget {
                 'Ingredients',
                 style: Theme.of(context).textTheme.titleLarge!.copyWith(
                       color: Theme.of(context).colorScheme.primary,
-
                     ),
               ),
               for (final ingredient in meal.ingredients)
