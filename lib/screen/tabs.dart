@@ -1,4 +1,3 @@
-
 import 'package:expense_tracker/providers/favourites_provider.dart';
 import 'package:expense_tracker/providers/filters_provider.dart';
 import 'package:expense_tracker/providers/meals_provider.dart';
@@ -36,11 +35,8 @@ class _TabsScreenState extends ConsumerState<TabsScreen> {
 
   void _setScreen(String identifier) async {
     if (identifier == 'filters') {
-      final result =
-          await Navigator.of(context).push<Map<Filter, bool>>(MaterialPageRoute(
-              builder: (ctx) => FilterScreen(
-                    currentFilters: _selectedFilters,
-                  )));
+      final result = await Navigator.of(context).push<Map<Filter, bool>>(
+          MaterialPageRoute(builder: (ctx) => const FilterScreen()));
       //To replace an active screen
       setState(() {
         _selectedFilters = result ?? kInitialFilters;
@@ -51,6 +47,7 @@ class _TabsScreenState extends ConsumerState<TabsScreen> {
   @override
   Widget build(BuildContext context) {
     final meals = ref.watch(mealsProvider);
+    final activeFilters = ref.watch(filtersProvider);
 
     final availableMeals = meals.where((meal) {
       if (_selectedFilters[Filter.gluttenFree]! && !meal.isGLutenFree) {
