@@ -1,6 +1,6 @@
 import 'package:expense_tracker/providers/favourites_provider.dart';
 import 'package:expense_tracker/providers/filters_provider.dart';
-import 'package:expense_tracker/providers/meals_provider.dart';
+
 import 'package:expense_tracker/screen/categories.dart';
 import 'package:expense_tracker/screen/filters.dart';
 import 'package:expense_tracker/screen/meals.dart';
@@ -41,24 +41,8 @@ class _TabsScreenState extends ConsumerState<TabsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final meals = ref.watch(mealsProvider);
-    final activeFilters = ref.watch(filtersProvider);
+    final availableMeals = ref.watch(filteredMealsProvider);
 
-    final availableMeals = meals.where((meal) {
-      if (activeFilters[Filter.gluttenFree]! && !meal.isGLutenFree) {
-        return false;
-      }
-      if (activeFilters[Filter.lactoseFree]! && !meal.isLactoseFree) {
-        return false;
-      }
-      if (activeFilters[Filter.vegetarian]! && !meal.isVeg) {
-        return false;
-      }
-      if (activeFilters[Filter.vegan]! && !meal.isVegan) {
-        return false;
-      }
-      return true;
-    }).toList();
     Widget activePage = CategoriesScreen(
       availableMeals: availableMeals,
     );
