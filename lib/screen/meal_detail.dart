@@ -30,11 +30,16 @@ class MealDetailsScreen extends ConsumerWidget {
                   duration: const Duration(seconds: 2),
                   transitionBuilder: (child, animation) {
                     return RotationTransition(
-                      turns: animation,
+                      turns: Tween(begin: 0.5, end: 1.0).animate(
+                          animation), //give more control between which widget to animate
                       child: child,
                     );
                   },
-                  child: Icon(isFavourite ? Icons.star : Icons.star_border)),
+                  child: Icon(
+                    isFavourite ? Icons.star : Icons.star_border,
+                    key: ValueKey(isFavourite),
+                  )),
+              //key are used for if we need to differentiate to same widget but got different data
             ),
           ],
         ),
